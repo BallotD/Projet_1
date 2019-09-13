@@ -59,7 +59,7 @@
 		}
 
 
-		function dispSemaine( $unedate)// renvoie le code HTML d'une semaine pour le calendrier? à exetuer 5 fois. PS: le compteur commence à 0
+		function dispSemaine( $unedate)// renvoie le code HTML d'une semaine pour le calendrier? à executer 5 fois. PS: le compteur commence à 0
 		{
 			
 			$lesferies = GetJourFeriesdeLan($unedate->format('Y'));//liste desj ours feriés
@@ -171,7 +171,7 @@
 					{
 						if ($dddate->format('d') == $lerepos['jour'] and $lerepos['mois'] == $dddate->format('m') and $lerepos['annee'] == $dddate->format('Y') )
 						{
-							if ($_SESSION['droits'] == '1')
+							if ($_SESSION['droits'] == '2')
 							{
 								if($lerepos['id_utilisateur'] == $_SESSION['id'] )
 								{
@@ -226,7 +226,7 @@
 					{
 						if ($dddate->format('d') == $lerepos['jour'] and $lerepos['mois'] == $dddate->format('m') and $lerepos['annee'] == $dddate->format('Y') )
 						{
-							if ($_SESSION['droits'] == '1')
+							if ($_SESSION['droits'] == '2')
 							{
 								if($lerepos['id_utilisateur'] == $_SESSION['id'] )
 								{
@@ -534,9 +534,9 @@ function printFerie()
 
 }
 
-function printAwaitingRequests($date, $etat, $employe, $type) // generation html des demandes
+function printAwaitingRequests($date, $etat, $employe) // generation html des demandes
 {
-	$demandes = getDemandes($date, $etat, $employe, $type);
+	$demandes = getDemandes($date, $etat, $employe);
 	if (count($demandes)> 0 ) {
             foreach ($demandes as $lademande)
             {
@@ -571,17 +571,14 @@ function printAwaitingRequests($date, $etat, $employe, $type) // generation html
 		echo('
 			<div class="utilisateur" name="utilisateur" value="'.$lademande['ID_request'].'">
 					<div class="utilisateur_barre_1">
-						<div class="utilisateur_sous_div">Requête de '.$letype.' pour le '.$ladate->format('D d M Y').' '.$moment.' </div> 
-						<div class="utilisateur_sous_div" > Par '.$lademande['nom'] .' '.$lademande['prenom'].' (Matricule = '.$lademande['Matricule'].') </div>
+						<div class="utilisateur_sous_div" > Par '.$lademande['nom'] .' '.$lademande['prenom'].' </div>
 						<div class="utilisateur_sous_div" > Etat: '.$letat.' </div>
 					</div>
-					<div class="utilisateur_barre">
-						Demi-journées à poser: <br> <br> CP : '.getCompteurs($lademande['id_utilisateur'])['CP'].' <br> <br> Sans soldes : '.getCompteurs($lademande['id_utilisateur'])['SS']  .'
-					</div>
+					
 					<div class="utilisateur_barre">
 						
 						<button id="Accepter'.$lademande['ID_request'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['ID_request'].', 1, 0 )"  value="'.$lademande['ID_request'].'" >Accepter</button>
-						Commentaire : <input type="text" id="Commentaire'.$lademande['ID_request'].'"  class="input_component" href="#" '.$disabled.' value="'.$lademande['commentaire'].'" >
+						Commentaire : <input type="text" id="Commentaire'.$lademande['ID_request'].'"  class="input_component" href="#" '.$disabled.' value="'.$lademande['commentEleve'].'" >
 						<button id="Refuser'.$lademande['ID_request'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['ID_request'].', 0, 0 )"  >Refuser</button>
 					</div>
 				</div>

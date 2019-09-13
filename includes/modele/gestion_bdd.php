@@ -128,12 +128,13 @@ function getDemandesenAttenteceMois($mois)//retourne les compteurs
 	return $rawdata;
 }
 
-function getDemandes($date, $etat, $employe, $type)//retourne les compteurs 
+function getDemandes($date, $etat, $employe)//retourne les compteurs 
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
 	$compteurs = $bdd->query(' select * from intervention
 								inner join horaire on id = idHoraire
+								inner join utilisateur on ID_u = id_utilisateur
 								where 1=1 '.$date.$etat.$employe.'
 								order by date desc;'  );
 	$rawdata = $compteurs->fetchAll();
