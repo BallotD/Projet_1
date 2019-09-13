@@ -13,7 +13,7 @@
 </fieldset>
 <fieldset>
     <legend>Adresse mail : </legend>
-    <input class="input_component" id="mail" type="text" name="mail" oninput="checkInscription()"/>
+    <input class="input_component" id="mail" type="text" name="mail" oninput="verifmail()"/>
 </fieldset>
 <fieldset>
     <legend>Votre numéro de téléphone :</legend>

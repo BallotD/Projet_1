@@ -509,12 +509,27 @@ function checkInscription()
 	var serie = document.getElementById("serie");
 	var annee = document.getElementById("annee");
 	var parcours = document.getElementById("parcours");
+	
 	if (nom.value == '' || prenom.value == '' || mail.value == '' || telephone.value == '' || serie.value == '' || annee.value == '' || parcours.value == '')
 		{
 			ValiderButton.disabled = true;
 		}
 	else{
+		   ValiderButton.disabled = false;
+	}
+	
+}
+function verifmail()
+{
+
+	var reg = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
+ 
+        if(reg.test(mail))
+        {
 			ValiderButton.disabled = false;
+		}
+		else{
+			alert('L\'adresse mail est incorrecte');
 		}
 }
 
