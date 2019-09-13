@@ -110,11 +110,11 @@ function getUserbyID($id) //retourne l'utilisateur
     return $rawdata;
 }
 
-function getCompteurs($userid)//retourne les compteurs 
+function getCompteurs()//retourne les compteurs 
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$compteurs = $bdd->query(' select compteur_dj_cp as CP, compteur_dj_ss as SS from utilisateur where ID = "'.$userid.'";'  );
+	$compteurs = $bdd->query(' select count(*) as DemandesenAttentes from intervention where accepte = null ' );
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
@@ -132,9 +132,9 @@ function getDemandes($date, $etat, $employe, $type)//retourne les compteurs
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$compteurs = $bdd->query(' select * from demie_journee
-								inner join utilisateur on intervention.id_utilisateur = utilisateur.ID
-								where 1=1 '.$date.$etat.$employe.$type.'
+	$compteurs = $bdd->query(' select * from intervention
+								inner join horaire on id = idHoraire
+								where 1=1 '.$date.$etat.$employe.'
 								order by date desc;'  );
 	$rawdata = $compteurs->fetchAll();
 	return $rawdata;

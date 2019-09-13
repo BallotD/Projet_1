@@ -9,7 +9,7 @@ switch ($action)
 {	   
     //page d'accueil de la gestion des demandes
     case "gererdemande" : {
-        require "vues/v_manage_requests.php" ; 
+        require "vues/v_manage_request_prof.php" ; 
         break ;  
     }
 	case "modifierMdp" : {

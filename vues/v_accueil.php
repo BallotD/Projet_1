@@ -9,17 +9,7 @@
       </div>
       <div class="current-month" ><?php echo($dateref->format('M').' '.$dateref->format('Y')); ?></div>
 		  <div class="current-month" ><?php echo($_SESSION['prenom'].' '. $_SESSION['nom']); ?></div>
-		  <div class="current-month" ><?php if ($_SESSION['droits'] == "1")
-{
-	$CP = getCompteurs($_SESSION['id'])['CP'];
-			  $SS = getCompteurs($_SESSION['id'])['SS'];
-			  echo('Reserve de demi-journées: <br> CP: '.$CP.' <br> Sans Soldes: '.$SS  ); 
-}
-			  else
-			  {
-				  echo('Demandes en attente ce mois-ci: '.getDemandesenAttenteceMois($dateref->format('m'))['nb_demandes'].' (total: '.getDemandesceMois($dateref->format('m'))['nb_demandes'].' )');
-			  }
-			  ?></div>
+		  
 		  <div class="current-month" >
 		  <form action="includes/modele/deconnexion.php" method="get">
 
@@ -49,15 +39,20 @@
     </div>
   </main>
 	  <?php 
-	  if($_SESSION['droits'] == "1")
+	  if($_SESSION['droits'] == "2")
 	  {
 		 include "v_menu_user.php" ; 
 		  
 	  }
 	  else
 	  {
-		  
-		  include "v_menu_admin.php";
+		  if($_SESSION['droits'] == "0") 
+		  {
+			include "v_menu_admin.php";
+		  }
+		  else {
+			  include "v_menu_prof.php";
+		  }
 	  }
 	  
 	   ?>

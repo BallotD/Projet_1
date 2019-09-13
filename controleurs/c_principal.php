@@ -13,11 +13,17 @@ switch ($uc)
         break ;
     }
     case 'user' : { 
-        if ($_SESSION['droits'] == "1") {
+        if ($_SESSION['droits'] == "2") {
             include "c_user.php" ; 
         }
         break ;        
     }
+	case 'professeur' : {
+		if($_SESSION['droits'] == "1") {
+			include "c_professeur.php" ;
+		}
+		break;
+	}
     case 'manage' : { 
         if ($_SESSION['droits'] == "0") {
             include "c_manage.php";            

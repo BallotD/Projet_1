@@ -177,15 +177,15 @@
 								{
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
+										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' . '</span>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' . '</span>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' . '</span>';
 									}
 										
 								}
@@ -232,15 +232,15 @@
 								{
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
+										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' . '</span>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' . '</span>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' . '</span>';
 									}
 										
 								}
@@ -556,15 +556,7 @@ function printAwaitingRequests($date, $etat, $employe, $type) // generation html
 			$disabled = 'disabled';
 		}
 		$ladate = new DateTime($lademande['date']);
-		$letype = "";
-		if ($lademande["type"] == 'ss')
-		{
-			$letype = "Sans solde";
-		}
-		else
-		{
-			$letype =strtoupper($lademande['type']);
-		}
+		
 		
 		$moment = "";
                 if ($lademande['moment'] == 1)
